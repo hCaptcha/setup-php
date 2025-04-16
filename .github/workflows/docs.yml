@@ -19,7 +19,7 @@ jobs:
         php-versions: ['5.3', '5.4', '5.5', '5.6', '7.0', '7.1', '7.2', '7.3', '7.4', '8.0', '8.1', '8.2', '8.3', '8.4', '8.5']
     steps:
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@6c489b2fc701c5f9ed70ccebe221b567bee578c0 # v2
         with:
           php-version: ${{ matrix.php-versions }}
           tools: none
@@ -38,7 +38,7 @@ jobs:
         run: |
           php -m | Out-File -FilePath "$env:file.all" -Append
       - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+        uses: shivammathur/setup-php@6c489b2fc701c5f9ed70ccebe221b567bee578c0 # v2
         with:
           php-version: ${{ matrix.php-versions }}
           extensions: none
@@ -87,7 +87,7 @@ jobs:
           Remove-Item "$env:file.all" -Force
           Remove-Item "$env:file.builtin" -Force
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
           name: lists-php${{ matrix.php-versions }}-${{ matrix.operating-system }}.md
           path: php${{ matrix.php-versions }}-${{ matrix.operating-system }}.md
@@ -99,11 +99,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
         with:
           repository: ${{ github.repository }}.wiki
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@95815c38cf2ff2164869cbab79da8d1f422bc89e # v4.2.1
         with:
           path: ${{ github.workspace }}/lists
           pattern: lists-*
